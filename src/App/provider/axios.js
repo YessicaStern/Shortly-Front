@@ -15,8 +15,8 @@ function postSignUp(e){
 function postSignIn(e){
     return axios.post(`${url}/signin`,e);
 }
-function postShorten(e){
-    return axios.post(`${url}/urls/shorten`);
+function postUrl(e){
+    return axios.post(`${url}/urls/shorten`,e,config);
 }
 function getUser(){
     return axios.get(`${url}/users/me`,config);
@@ -24,5 +24,10 @@ function getUser(){
 function deleteUrl(e){
     return axios.delete(`${url}/urls/${e}`,config);
 }
-
-export{getRanking,postSignUp,postSignIn,getUser,deleteUrl};
+function getUrlId(e){
+    return axios.get(`${url}/urls/${e}`);
+}
+function getOpen(e){
+    return axios.get(`${url}/urls/open/${e}`);
+}
+export{getRanking,postSignUp,postSignIn,getUser,deleteUrl,postUrl,getUrlId,getOpen};

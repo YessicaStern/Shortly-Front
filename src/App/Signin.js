@@ -10,6 +10,8 @@ export default function Signin(){
         email:"",
         password:"", 
     });
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
     function handleForm(e){
         e.preventDefault();
         setForm({...form,[e.target.name]:e.target.value,});
@@ -17,7 +19,8 @@ export default function Signin(){
     function enter(){
         postSignIn(form).then((e)=>{
             localStorage.setItem("token",e.data.token);
-            navigate("/user");
+            navigate("/user");  
+            window.location.reload();
         }).catch((err)=>{
             alert(err.response.data.message);
         });
